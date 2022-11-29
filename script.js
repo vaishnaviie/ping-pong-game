@@ -4,6 +4,17 @@ const ctx= canvas.getContext("2d");
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
+const LEFT="ArrowLeft";
+const RIGHT="ArrowRight";
+const keyPressed=[LEFT,RIGHT];
+
+window.addEventListener("keydown",function(e){
+    keyPressed[e.key]=true;
+})
+window.addEventListener("keyup",function(e){
+    keyPressed[e.key]=false;
+})
+
 function xy(x,y){
     return{
         x:x,
@@ -42,7 +53,12 @@ class Paddle{
         this.height=height;
 
         this.update=function(){
-            
+            if(keyPressed[RIGHT]){
+                this.pos.x+=this.velocity.x;
+            }
+            if(keyPressed[LEFT]){
+                this.pos.x-=this.velocity.x;
+            }
         }
 
         this.draw=function(){
@@ -68,6 +84,15 @@ function ballCollusionWithEdges(ball){
     }
 }
 
+function PaddleCollusionWithEdges(Paddle){
+    if(Paddle.pos.x<=0){
+        Paddle.pos.x=0;
+    }
+    if(Paddle.pos.x+Paddle.width>canvas.width){
+        Paddle.pos.x=canvas.width-Paddle.width;
+    }
+}
+
 const ball=new Ball(xy(500,250),xy(15,15),20);
 const Paddle1=new Paddle(xy(100,canvas.height-30),xy(16,16),200,30);
 const Paddle2=new Paddle(xy(500,0),xy(16,16),200,30);
@@ -76,7 +101,8 @@ function gameUpdate(){
     ball.update();
     ballCollusionWithEdges(ball);
     Paddle1.update();
-
+    PaddleCollusionWithEdges(Paddle1);
+    PaddleCollusionWithEdges(Paddle2);
 }
 
 function gameDraw(){
