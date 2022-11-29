@@ -93,9 +93,28 @@ function PaddleCollusionWithEdges(Paddle){
     }
 }
 
+function player2(ball,Paddle){
+    if(ball.velocity.y<0 ){
+        if(ball.pos.x>Paddle.pos.x){
+            Paddle.pos.x+=Paddle.velocity.x;
+            if(Paddle.pos.x+Paddle.width>=canvas.width){
+                Paddle.pos.x=canvas.width-Paddle.width;
+            }
+        }
+
+        if(ball.pos.x<Paddle.pos.x){
+            Paddle.pos.x-=Paddle.velocity.x;          
+            if(Paddle.pos.x<=0){
+                Paddle.pos.x=0;
+            }
+        }
+        
+    }
+}
+
 const ball=new Ball(xy(500,250),xy(15,15),20);
 const Paddle1=new Paddle(xy(100,canvas.height-30),xy(16,16),200,30);
-const Paddle2=new Paddle(xy(500,0),xy(16,16),200,30);
+const Paddle2=new Paddle(xy(500,0),xy(25,25),200,30);
 
 function gameUpdate(){
     ball.update();
@@ -103,6 +122,7 @@ function gameUpdate(){
     Paddle1.update();
     PaddleCollusionWithEdges(Paddle1);
     PaddleCollusionWithEdges(Paddle2);
+    player2(ball,Paddle2);
 }
 
 function gameDraw(){
