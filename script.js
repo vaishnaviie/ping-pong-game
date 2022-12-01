@@ -60,13 +60,28 @@ class Paddle{
             if(keyPressed[LEFT]){
                 this.pos.x-=this.velocity.x;
             }
-        }
+        };
 
         this.draw=function(){
             ctx.fillStyle="rgb(203, 47, 172)";
             ctx.fillRect(this.pos.x,this.pos.y,this.width,this.height);
             // ctx.fill();
-        }
+        };
+
+        this.getHalfWidth=function(){
+            return this.width/2;
+        };
+
+        this.getHalfHeight=function(){
+            return this.height/2;
+        };
+
+        this.getCenter=function(){
+            return xy(
+                this.pos.x+ this.getHalfWidth(),
+                this.pos.y+ this.getHalfHeight()
+            )
+        };
     }
 };
 
@@ -141,8 +156,17 @@ function increaseScore(ball,Paddle1,Paddle2){
     }
 }
 
-const ball=new Ball(xy(500,250),xy(15,15),20);
-const Paddle1=new Paddle(xy(100,canvas.height-30),xy(16,16),200,30);
+function ballPaddleCollusion(ball,Paddle){
+    let dx=Math.abs(ball.pos.x-Paddle.getCenter().x);
+    let dy=Math.abs(ball.pos.y-Paddle.getCenter().y);
+    console.log(dy);
+    if(dy<=(ball.radius+Paddle.getHalfHeight()) && dx<=(ball.radius+Paddle.getHalfWidth())){
+        ball.velocity.y*=-1;
+    }
+}
+
+const ball=new Ball(xy(500,250),xy(12,12),20);
+const Paddle1=new Paddle(xy(700,canvas.height-30),xy(16,16),200,30);
 const Paddle2=new Paddle(xy(500,0),xy(30,30),200,30);
 
 function gameUpdate(){
@@ -152,7 +176,10 @@ function gameUpdate(){
     PaddleCollusionWithEdges(Paddle1);
     PaddleCollusionWithEdges(Paddle2);
     player2(ball,Paddle2);
+    ballPaddleCollusion(ball,Paddle1);
+    ballPaddleCollusion(ball,Paddle2);
     increaseScore(ball,Paddle1,Paddle2);
+    
 }
 
 function gameDraw(){
