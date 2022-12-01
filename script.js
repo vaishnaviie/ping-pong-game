@@ -114,7 +114,7 @@ function player2(ball,Paddle){
 
 const ball=new Ball(xy(500,250),xy(15,15),20);
 const Paddle1=new Paddle(xy(100,canvas.height-30),xy(16,16),200,30);
-const Paddle2=new Paddle(xy(500,0),xy(25,25),200,30);
+const Paddle2=new Paddle(xy(500,0),xy(30,30),200,30);
 
 function gameUpdate(){
     ball.update();
