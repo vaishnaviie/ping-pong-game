@@ -22,20 +22,25 @@ function xy(x,y){
     }
 }
 
+const colors=["#FAF901","#85FA01","#01FA8A","#01FAD3","#01CBFA","#019EFA","#0110FA","#C601FA","#FA01F9","#FA017B","#FA0101","#FA6F01","#FAB801","#FAB801"];
+
+
 class Ball{
     constructor(pos,velocity,radius){
         this.pos=pos;
         this.velocity=velocity;
         this.radius=radius;
-
+        this.i=0;
         this.update=function(){
             this.pos.x+=this.velocity.x;
             this.pos.y+=this.velocity.y;
         }
-
+        // let i=0;
         this.draw=function(){
-            ctx.fillStyle= "rgb(203, 47, 172)";
-            ctx.strokeStyle="rgb(203, 47, 172)";
+            // ctx.fillStyle= "rgb(203, 47, 172)";
+            // ctx.strokeStyle="rgb(203, 47, 172)";
+            ctx.fillStyle= colors[this.i];
+            ctx.strokeStyle=colors[this.i];
             ctx.beginPath();
             ctx.arc(this.pos.x,this.pos.y,this.radius,0,Math.PI*2);
             ctx.stroke();
@@ -52,6 +57,7 @@ class Paddle{
         this.width=width;
         this.height=height;
         this.score=0;
+        this.i=0;
 
         this.update=function(){
             if(keyPressed[RIGHT]){
@@ -63,7 +69,8 @@ class Paddle{
         };
 
         this.draw=function(){
-            ctx.fillStyle="rgb(203, 47, 172)";
+            // ctx.fillStyle="rgb(203, 47, 172)";
+            ctx.fillStyle=colors[this.i];
             ctx.fillRect(this.pos.x,this.pos.y,this.width,this.height);
             // ctx.fill();
         };
@@ -142,16 +149,36 @@ function responseball(ball){
     ball.velocity.y*=-1;
 }
 
-function increaseScore(ball,Paddle1,Paddle2){
+const h=document.querySelector("#h");
+function heart(heartLeft){
+    if(heartLeft==4){
+        h.innerHTML="❤️❤️❤️❤️🤍";
+    }
+    if(heartLeft==3){
+        h.innerHTML="❤️❤️❤️🤍🤍";
+    }
+    if(heartLeft==2){
+        h.innerHTML="❤️❤️🤍🤍🤍";
+    }
+    if(heartLeft==1){
+        h.innerHTML="❤️🤍🤍🤍🤍";
+    }
+    if(heartLeft==0){
+        h.innerHTML="🤍🤍🤍🤍🤍";
+    }
+}
+
+function scoreIncrementation(ball,Paddle1,Paddle2){
     if(ball.pos.y<=-ball.radius){
         Paddle1.score+=1;
         document.getElementById("score-player1").innerHTML=Paddle1.score;
         responseball(ball);
     }
-
+    
     if(ball.pos.y>=canvas.height+ball.radius){
         Paddle2.score+=1;
         document.getElementById("score-player2").innerHTML=Paddle2.score;
+        heart(--heartLeft);
         responseball(ball);
     }
 }
@@ -159,14 +186,13 @@ function increaseScore(ball,Paddle1,Paddle2){
 function ballPaddleCollusion(ball,Paddle){
     let dx=Math.abs(ball.pos.x-Paddle.getCenter().x);
     let dy=Math.abs(ball.pos.y-Paddle.getCenter().y);
-    console.log(dy);
     if(dy<=(ball.radius+Paddle.getHalfHeight()) && dx<=(ball.radius+Paddle.getHalfWidth())){
         ball.velocity.y*=-1;
     }
 }
 
 const ball=new Ball(xy(500,250),xy(12,12),20);
-const Paddle1=new Paddle(xy(700,canvas.height-30),xy(16,16),200,30);
+const Paddle1=new Paddle(xy(900,canvas.height-30),xy(16,16),200,30);
 const Paddle2=new Paddle(xy(500,0),xy(30,30),200,30);
 
 function gameUpdate(){
@@ -178,7 +204,7 @@ function gameUpdate(){
     player2(ball,Paddle2);
     ballPaddleCollusion(ball,Paddle1);
     ballPaddleCollusion(ball,Paddle2);
-    increaseScore(ball,Paddle1,Paddle2);
+    scoreIncrementation(ball,Paddle1,Paddle2);
     
 }
 
@@ -186,6 +212,7 @@ function gameDraw(){
     ball.draw();
     Paddle1.draw();
     Paddle2.draw();
+
 }
 
 function gameLoop(){
@@ -198,7 +225,26 @@ function gameLoop(){
     gameDraw();
 }
 
+
+let heartLeft=5;
+totalChancesHearts= new Array("❤️","❤️","❤️","❤️","❤️");
+for(let i=0;i<totalChancesHearts.length;i++){
+    document.getElementById("h").innerHTML+=totalChancesHearts[i];
+}
+        
 gameLoop();
+
+function ballColor(){
+    ball.i+=1;
+    Paddle1.i+=1;
+    Paddle2.i+=1;
+    if(ball.i==11 && Paddle1.i==11 && Paddle2.i){
+        ball.i=0;
+        Paddle1.i=0;  
+        Paddle2.i=0;
+    }
+}setInterval(ballColor,3000);
+
 
 
 

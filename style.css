@@ -11,7 +11,7 @@ h1{
     font-size: 4rem;
     position: absolute;
     
-}
+} 
 
 #score-player1{
     bottom: 100px;
@@ -21,4 +21,14 @@ h1{
 #score-player2{
     top: 100px;
     left: 800px;
+}
+
+#h{
+    height: 40px;
+    width: 220px;
+    margin-left: 47%;
+    font-size: 2rem;
+    position: absolute;
+    top: 300px;
+    
 }
