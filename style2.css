@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: black;
+    overflow: hidden;
+}
+
+#game-over{
+    color: white;
+    font-size: 6rem;
+    height: 22rem;
+    width: auto;
+    /* margin: auto; */
+    margin-top: 7rem;
+    margin-left: 15rem;
+}
+
+#btn{
+    height: 4rem;
+    width: 15rem;
+    font-size: 2rem;
+    margin-left: 40rem;
+    border: 3px solid black;
+    border-radius: 0.6rem;
+    background-color: white;
+    
+}
+
+#btn:hover {
+    background-image: repeating-linear-gradient(-45deg, 
+      #7BDFF2 10px 30px,
+      #B2F7EF 30px 50px,
+      #EFF7F6 50px 70px,
+      #F7D6E0 70px 90px,
+      #F2B5D4 90px 110px
+  );
+    border: 3px solid white;
+}
+
+/* label{
+    color: white;
+    
+}  */
+
+/* input{
+    margin-top: 5rem;
+    width: 15rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+} */
+
+/* #label-input{
+    height: 5rem;
+    width: auto;
+    margin-top: 10rem;
+    margin-left: 20rem;
+    font-size: 3rem;
+    margin: auto;
+} */
+

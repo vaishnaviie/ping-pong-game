@@ -31,11 +31,12 @@ class Ball{
         this.velocity=velocity;
         this.radius=radius;
         this.i=0;
+
         this.update=function(){
             this.pos.x+=this.velocity.x;
             this.pos.y+=this.velocity.y;
         }
-        // let i=0;
+        
         this.draw=function(){
             // ctx.fillStyle= "rgb(203, 47, 172)";
             // ctx.strokeStyle="rgb(203, 47, 172)";
@@ -160,11 +161,15 @@ function heart(heartLeft){
     if(heartLeft==2){
         h.innerHTML="❤️❤️🤍🤍🤍";
     }
-    if(heartLeft==1){
+    if(heartLeft==1){ 
         h.innerHTML="❤️🤍🤍🤍🤍";
     }
     if(heartLeft==0){
         h.innerHTML="🤍🤍🤍🤍🤍";
+        function pageRedirect() {
+            window.location.replace("gameover.html");
+        }      
+        setTimeout(pageRedirect(),2000);
     }
 }
 
@@ -226,6 +231,7 @@ function gameLoop(){
 }
 
 
+
 let heartLeft=5;
 totalChancesHearts= new Array("❤️","❤️","❤️","❤️","❤️");
 for(let i=0;i<totalChancesHearts.length;i++){
@@ -233,6 +239,7 @@ for(let i=0;i<totalChancesHearts.length;i++){
 }
         
 gameLoop();
+
 
 function ballColor(){
     ball.i+=1;

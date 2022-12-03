@@ -10,16 +10,15 @@ h1{
     color: white;
     font-size: 4rem;
     position: absolute;
-    
 } 
 
 #score-player1{
-    bottom: 100px;
+    bottom: 200px;
     left: 800px;
 }
 
 #score-player2{
-    top: 100px;
+    top: 200px;
     left: 800px;
 }
 
@@ -29,6 +28,24 @@ h1{
     margin-left: 47%;
     font-size: 2rem;
     position: absolute;
-    top: 300px;
+    top: 350px;
     
+}
+
+p{
+    color: white;
+    font-size: 2.5rem;
+    position: absolute;
+}
+
+#computer{
+    color: white;
+    top: 100px;
+    left: 748px;
+}
+
+#player{
+    color: white;
+    bottom: 100px;
+    left: 780px;
 }
