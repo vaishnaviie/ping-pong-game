@@ -10,7 +10,7 @@ body{
 #game-over{
     color: white;
     font-size: 6rem;
-    height: 22rem;
+    height: 13rem;
     width: auto;
     /* margin: auto; */
     margin-top: 7rem;
@@ -21,11 +21,11 @@ body{
     height: 4rem;
     width: 15rem;
     font-size: 2rem;
-    margin-left: 40rem;
-    border: 3px solid black;
+    margin-left: 42rem;
+    border: 3px solid gray;
     border-radius: 0.6rem;
     background-color: white;
-    
+    margin-top: 5rem;
 }
 
 #btn:hover {
@@ -39,6 +39,17 @@ body{
     border: 3px solid white;
 }
 
+#my-img{
+    margin-top: 1rem;
+    margin-left: 25rem;
+    border: 3px solid white;
+}
+
+p{
+    margin-left: 33rem;
+    margin-top: 1rem;
+    color: white;
+}
 /* label{
     color: white;
     
