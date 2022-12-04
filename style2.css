@@ -17,7 +17,7 @@ body{
     margin-left: 15rem;
 }
 
-#btn{
+.btn{
     height: 4rem;
     width: 15rem;
     font-size: 2rem;
@@ -28,7 +28,7 @@ body{
     margin-top: 5rem;
 }
 
-#btn:hover {
+.btn:hover {
     background-image: repeating-linear-gradient(-45deg, 
       #7BDFF2 10px 30px,
       #B2F7EF 30px 50px,
@@ -36,7 +36,7 @@ body{
       #F7D6E0 70px 90px,
       #F2B5D4 90px 110px
   );
-    border: 3.5px solid white;
+    /* border: 3.5px solid white; */
 }
 
 #my-img{
@@ -50,25 +50,5 @@ p{
     margin-top: 1rem;
     color: white;
 }
-/* label{
-    color: white;
-    
-}  */
 
-/* input{
-    margin-top: 5rem;
-    width: 15rem;
-    height: 2rem;
-    font-size: 1.5rem;
-    padding-left: 1rem;
-} */
-
-/* #label-input{
-    height: 5rem;
-    width: auto;
-    margin-top: 10rem;
-    margin-left: 20rem;
-    font-size: 3rem;
-    margin: auto;
-} */
 

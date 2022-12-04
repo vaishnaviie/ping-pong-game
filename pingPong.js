@@ -167,7 +167,7 @@ function heart(heartLeft){
     if(heartLeft==0){
         h.innerHTML="🤍🤍🤍🤍🤍";
         function pageRedirect() {
-            window.location.replace("gameover.html");
+            window.location.replace("gameOver.html");
         }      
         setTimeout(pageRedirect(),1000);
     }
