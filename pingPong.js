@@ -169,7 +169,7 @@ function heart(heartLeft){
         function pageRedirect() {
             window.location.replace("gameOver.html");
         }      
-        setTimeout(pageRedirect(),1000);
+        setTimeout(pageRedirect(),500);
     }
 }
 
