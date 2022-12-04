@@ -22,9 +22,9 @@ body{
     width: 15rem;
     font-size: 2rem;
     margin-left: 42rem;
-    border: 3px solid gray;
+    border: 3.5px solid rgb(51, 254, 5);
     border-radius: 0.6rem;
-    background-color: white;
+    background-color:white;
     margin-top: 5rem;
 }
 
@@ -36,7 +36,7 @@ body{
       #F7D6E0 70px 90px,
       #F2B5D4 90px 110px
   );
-    border: 3px solid white;
+    border: 3.5px solid white;
 }
 
 #my-img{
