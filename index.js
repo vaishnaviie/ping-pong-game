@@ -1,5 +1,6 @@
 const text=document.querySelector("#text");
 const btn=document.querySelector(".btn");
+const btnPlayGame=document.querySelector("#btn-play-game");
 
 function textAnimation() {
     text.style.color="black";
@@ -25,4 +26,13 @@ function btnAnimation() {
 } 
 setInterval(btnAnimation,400);
 
+
+function playGameHandler(){
+    function pageRedirect() {
+        window.location.replace("pingPong.html");
+    }      
+    setTimeout(pageRedirect(),500);
+}
+
+btnPlayGame.addEventListener("click",playGameHandler);
 // myName.style.border="5px solid green";
